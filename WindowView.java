@@ -7,9 +7,10 @@ import javafx.util.Duration;
 
 public class WindowView extends Group {
     public WindowView(int x, int y, int angle){
+        System.out.println("Coordenada x:" + x +"COordenada y: " + y );
         makeWindowViewWithoutSensor();
-        setRotate(angle);  // to rotate at the geometric center.
-        // getTransforms().add(new Rotate(angle,40,50));  // to rotate at anchor pivot (40,50)
+        // Rotar según pivote, en este caso centro de la ventana
+        getTransforms().add(new Rotate(angle,90, 10));
         relocate(x,y);
         prepareOpen_CloseTransition();
     }
@@ -33,19 +34,21 @@ public class WindowView extends Group {
         getChildren().addAll(origenPillar, switchPillar, fixedGlas,slidingGlas);
     }
 
-    public Window getWindowModel() {
-        return winModel;
-    }
     public void setWindowModel(Window model) {
         winModel = model;
+        setOnMouseClicked(event -> {
+            winModel.changeState();
+        });
     }
     public void addMagneticSensorView(MagneticSensorView msView){
         placeMagneticSensor(msView);
+        //...
         getChildren().add(msView);
     }
     private void placeMagneticSensor( MagneticSensorView mv){
         mv.getMagnetView().setX(slidingGlas.getX()+slidingGlas.getWidth()-mv.getMagnetView().getWidth());
-        mv.getMagnetView().setY(slidingGlas.getY()+slidingGlas.getHeight()-mv.getMagnetView().getHeight());
+        mv.getMagnetView().setY(slidingGlas.getY()+slidingGlas.getHeight());
+        mv.getSwitchView().setY(switchPillar.getBoundsInLocal().getHeight());
         mv.getMagnetView().translateXProperty().bind(slidingGlas.translateXProperty()); // so it moves along with window
     }
     private void prepareOpen_CloseTransition(){

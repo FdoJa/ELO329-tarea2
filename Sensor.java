@@ -1,18 +1,21 @@
 public class Sensor {
     public Sensor(int z){
-        this(z, SwitchState.CLOSE);
+        this(z, true);
     }
-    public Sensor(int z, SwitchState s){
+    public Sensor(int z, boolean close){
         zone = z;
-        state = s;
+        isClose = close;
     }
-    public SwitchState getState(){
-        return state;
+    public boolean isClose(){
+        return isClose;
     }
-    protected void setState(SwitchState s) {
-        state = s;
+    public int getZone() {
+        return zone;
+    }
+    protected void setClose(boolean close) {
+        isClose = close;
     }
 
-    private SwitchState state;
+    private boolean isClose;
     private int zone;
 }
