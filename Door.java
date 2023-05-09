@@ -19,19 +19,18 @@ public class Door {
             }
             case CLOSE, CLOSING -> {
                 state = State.OPENING;
+                magneticSensor.setSensorOpen();
                 dView.startOpening();
-                magneticSensor.getView().setOpenView();
             }
         }
     }
     public void finishMovement(){
         if (state == State.CLOSING){
             state = State.CLOSE;
-            magneticSensor.setClose(true);
-            magneticSensor.getView().setCloseView();
+            magneticSensor.setSensorClose();
         } else if (state == State.OPENING) {
             state = State.OPEN;
-            magneticSensor.setClose(false);
+            magneticSensor.setSensorOpen();
         }
     }
 
