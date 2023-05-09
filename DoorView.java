@@ -53,11 +53,6 @@ public class DoorView extends Group {
 
     public void addMagneticSensorView(MagneticSensorView msView) {
         placeMagneticSensor(msView);
-
-//////////////////////////////////////////////////
-
-
-
         getChildren().add(msView);
 
     }
