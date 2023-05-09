@@ -19,7 +19,6 @@ public class Central {
         return view;
     }
     public void armAll() {
-        System.out.println("Entro en armAll");
         boolean[] close = checkCloseZones();
         String msg="Open zone(s): ";
         msg+=(!close[0]?"0":"-") + (!close[1]?",1":"-") + (!close[2]?",2":"");
@@ -65,20 +64,13 @@ public class Central {
         boolean[] close = checkCloseZones();
         switch (state) {
             case ALL_ARMED -> {
-                System.out.println("Revisando todos los sensores");
-                for (Sensor sensor : zones){
-                    if (!sensor.isClose()){
-                        siren.play();
-                    }
+                if (!close[0] || !close[1] || !close[2]){
+                    siren.play();
                 }
             }
             case PERIMETER_ARMED -> {
-                for (Sensor sensor : zones){
-                    if (sensor.getZone() == 0 || sensor.getZone() == 1){
-                        if (!sensor.isClose()){
-                            siren.play();
-                        }
-                    }
+                if (!close[0] || !close[1]){
+                    siren.play();
                 }
             }
         }
