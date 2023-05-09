@@ -7,7 +7,6 @@ import javafx.util.Duration;
 
 public class WindowView extends Group {
     public WindowView(int x, int y, int angle){
-        System.out.println("Coordenada x:" + x +"COordenada y: " + y );
         makeWindowViewWithoutSensor();
         // Rotar según pivote, en este caso centro de la ventana
         getTransforms().add(new Rotate(angle,90, 10));
