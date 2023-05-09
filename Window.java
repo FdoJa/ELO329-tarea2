@@ -16,23 +16,21 @@ public class Window {
             case OPEN, OPENING -> {
                 state = State.CLOSING;
                 wView.startClosing();
-
             }
             case CLOSE, CLOSING -> {
                 state = State.OPENING;
+                magneticSensor.setSensorOpen();
                 wView.startOpening();
-                magneticSensor.getView().setOpenView();
             }
         }
     }
     public void finishMovement() { // is called when this window ends closing or opening
         if (state == State.CLOSING){
             state = State.CLOSE;
-            magneticSensor.setClose(true);
-            magneticSensor.getView().setCloseView();
+            magneticSensor.setSensorClose();
         } else if (state == State.OPENING){
             state = State.OPEN;
-            magneticSensor.setClose(false);
+            magneticSensor.setSensorOpen();
         }
     }
 
