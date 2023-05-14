@@ -30,7 +30,7 @@ public class WindowView extends Group {
         border.setStrokeWidth(1);
         border.getStrokeDashArray().addAll(4d,4d );
         getChildren().add(border);
-        getChildren().addAll(origenPillar, switchPillar, fixedGlas,slidingGlas);
+        getChildren().addAll(origenPillar, fixedGlas, switchPillar, slidingGlas);
     }
 
     public void setWindowModel(Window model) {
@@ -48,6 +48,7 @@ public class WindowView extends Group {
         mv.getMagnetView().setX(slidingGlas.getX()+slidingGlas.getWidth()-mv.getMagnetView().getWidth());
         mv.getMagnetView().setY(slidingGlas.getY()+slidingGlas.getHeight());
         mv.getSwitchView().setY(switchPillar.getBoundsInLocal().getHeight());
+        mv.getSwitchView().setX(2*slidingGlas.getX()+mv.getSwitchView().getWidth() - switchPillar.getBoundsInLocal().getWidth());
         mv.getMagnetView().translateXProperty().bind(slidingGlas.translateXProperty()); // so it moves along with window
     }
     private void prepareOpen_CloseTransition(){
