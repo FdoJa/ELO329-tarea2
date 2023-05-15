@@ -11,16 +11,11 @@ import javafx.util.Duration;
 public class DoorView extends Group {
     public DoorView(int x, int y, int angle) {
         makeDoorViewWithoutSensor();
-
         Bounds bounds = getBoundsInParent();
         double centerX = bounds.getMinX() + bounds.getWidth() / 2.0;
         double centerY = bounds.getMinY() + bounds.getHeight() / 2.0;
-
         getTransforms().add(new Rotate(-angle, centerX, centerY));  // to rotate at anchor pivot (40,50)
-
-
         relocate(x, y);
-        System.out.println("Coordenadas (x,y) de puerta-> x:" + getLayoutX() + "y:" + getLayoutY());
         prepareOpen_CloseTransition();
     }
 
