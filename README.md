@@ -32,9 +32,9 @@
 * Para limpiar la carpeta de los archivos de compilación ejecutar el comando "make 
 
 ## Consideraciones
-* Debido a complicaciones el stage4 no realiza el correcto funcionamiento para detectar a las personas en los PIRs; por lo que, aún cuando se tenga acceso correcto a la vista de personas y PIRs, la alarma no sonará
-* Se ha utilizado la función relocate(x,y) para localizar a los distintos objetos sobre el plano de la interfaz, por lo que su ubicación puede ser distinta a lo esperado dado que relocate coloca el punto de la esquina superior derecha del objeto en la posición (x,y) como si fuera este su centro.
+* Se ha utilizado una branch para cada stage, esta branch es solo de introducción.
+* Debido a complicaciones, el stage4 no realiza el correcto funcionamiento para detectar a las personas en los PIRs; por lo que, aún cuando se tenga acceso correcto a la vista de personas y PIRs, la alarma no sonará.
+* Se ha utilizado la función relocate(x,y) para localizar a los distintos objetos sobre el plano de la interfaz, por lo que su ubicación puede ser distinta a lo esperado dado que relocate coloca el punto de la esquina superior derecha del objeto en la posición (x,y) como si este fuera este su centro.
 * Las puertas se abren de inmediato sin una animación de rotación, pero si cumplen con que se abren rotando.
-
 
 
