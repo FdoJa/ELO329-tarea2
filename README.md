@@ -37,4 +37,6 @@
 * Se ha utilizado la función relocate(x,y) para localizar a los distintos objetos sobre el plano de la interfaz, por lo que su ubicación puede ser distinta a lo esperado dado que relocate coloca el punto de la esquina superior derecha del objeto en la posición (x,y) como si este fuera este su centro.
 * Las puertas se abren de inmediato sin una animación de rotación, pero si cumplen con que se abren rotando.
 
+## Documentacion Javadoc
+Para generar la documentacion en IntelliJ IDEA, se debe de abrir el proyecto en este IDE y luego ir a la pestaña de "Tools" y seleccionar la opcion "Generate JavaDoc". Luego de esto se debe de seleccionar la carpeta donde se guardara la documentacion y presionar "Ok". Finalmente se debe de abrir el archivo index.html o cualquier otro con la misma extension, que se encuentren en la carpeta seleccionada para ver la documentacion.
 
