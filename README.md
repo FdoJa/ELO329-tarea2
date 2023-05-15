@@ -1,4 +1,4 @@
-# Tapia Nicolas Rojas Aymara Guzman Maria Delgado Fernando TareaN1
+# Tapia Nicolas Rojas Aymara Guzman Maria Delgado Fernando TareaN2
 
 
 # Tarea 2: Simulacion de una alarma domestica a través de una interfaz gráfica y eventos
