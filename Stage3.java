@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Stage2 extends Application {
+public class Stage3 extends Application {
     @Override
     public void start(Stage primaryStage) {
         List<String> args = getParameters().getRaw();
@@ -45,7 +45,7 @@ public class Stage2 extends Application {
         borderPane.setPadding(new Insets(10,10,10,10));
         Scene scene = new Scene(borderPane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("ELO329: T2 Stage 2");
+        primaryStage.setTitle("ELO329: T2 Stage 3");
         primaryStage.show();
     }
     public static void main(String[] args) {

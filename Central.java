@@ -9,6 +9,7 @@ public class Central {
     public Central(Siren siren){
         view = new CentralView(this);
         zones = new ArrayList<Sensor>();
+        PIRs = new ArrayList<PIR_Detector>();
         state = CentralState.DISARMED;
         this.siren = siren;
         periodicCheck = new Timeline(new KeyFrame(Duration.millis(200),
@@ -18,7 +19,7 @@ public class Central {
     public VBox getView (){
         return view;
     }
-    public void armAll() {
+    public boolean armAll() {
         boolean[] close = checkCloseZones();
         String msg="Open zone(s): ";
         msg+=(!close[0]?"0":"-") + (!close[1]?",1":"-") + (!close[2]?",2":"");
@@ -27,12 +28,13 @@ public class Central {
         if(close[0] && close[1] && close[2] ) {
             state = CentralState.ALL_ARMED;
             periodicCheck.play();
+            return true;
         } else {
-            System.out.println("2");
             System.out.println(msg);
+            return false;
         }
     }
-    public void armPerimeter() {
+    public boolean armPerimeter() {
         boolean[] close = checkCloseZones();
         String msg="Open zone(s): ";
         msg+=(!close[0]?"0":"-") + (!close[1]?",1":"");
@@ -41,9 +43,10 @@ public class Central {
         if(close[0] && close[1] ) {
             state = CentralState.PERIMETER_ARMED;
             periodicCheck.play();
+            return true;
         } else {
             System.out.println(msg);
-            return;
+            return false;
         }
     }
     public void disarm() {
@@ -60,6 +63,10 @@ public class Central {
     public void addNewSensor(Sensor s){
         zones.add(s);
     }
+
+    public void addNewPir(PIR_Detector m){
+        PIRs.add(m);
+    }
     private void checkZones(){
         boolean[] close = checkCloseZones();
         switch (state) {
@@ -75,10 +82,30 @@ public class Central {
             }
         }
     }
+
+    public void checkPeople(ArrayList<Person> people){
+        for (Person h : people){
+            double x = h.getX();
+            double y = h.getY();
+            for (PIR_Detector s : PIRs){
+                s.detection(x,y);
+                if (s.getDetection()){
+                    for (Sensor z : zones){
+                        if (z.getZone() == 2){
+                            z.setClose(false);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     enum CentralState {
         ALL_ARMED, PERIMETER_ARMED, DISARMED
     }
     private final ArrayList<Sensor> zones;
+    private ArrayList<PIR_Detector> PIRs;
     private CentralState state;
     private final Siren siren;
     private final Timeline periodicCheck;
