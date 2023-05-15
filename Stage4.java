@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Stage3 extends Application {
+public class Stage4 extends Application {
     @Override
     public void start(Stage primaryStage) {
         List<String> args = getParameters().getRaw();
@@ -68,7 +68,7 @@ public class Stage3 extends Application {
         borderPane.setTop(toolbar);
         Scene scene = new Scene(borderPane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("ELO329: T2 Stage 3");
+        primaryStage.setTitle("ELO329: T2 Stage 4");
         primaryStage.show();
     }
     public static void main(String[] args) {

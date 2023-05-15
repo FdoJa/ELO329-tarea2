@@ -10,7 +10,7 @@ FILE="config.txt"
 	$(JC) $(JFLAGS) $(JFX_OPTIONS) $*.java
 
 CLASSES = \
-	Stage3.java \
+	Stage4.java \
 	House.java \
 	MagneticSensor.java \
 	MagneticSensorView.java \
@@ -30,7 +30,7 @@ CLASSES = \
 	Person.java \
 	PersonView.java
 
-MAIN = Stage3
+MAIN = Stage4
 
 default: classes
 
