@@ -28,28 +28,25 @@ public class CentralView extends VBox {
         dBtn.setFont(controlFont);
 
         aBtn.setOnAction(e -> {
-            System.out.println("ALL");
-            central.armAll();
+            if(central.armAll()){
+                display.setText("All armed");
+            }
         });
 
         pBtn.setOnAction(e -> {
-            System.out.println("PERIMETER");
-            central.armPerimeter();
+            if(central.armPerimeter()){
+                display.setText("Perimeter armed");
+            }
         });
 
         dBtn.setOnAction(e -> {
-            System.out.println("DISARM");
             central.disarm();
+            display.setText("Disarmed");
         });
-
-
 
         HBox hBox = new HBox();
         hBox.getChildren().addAll(aBtn,pBtn,dBtn);
         hBox.setAlignment(Pos.CENTER);
         getChildren().addAll(display,hBox);
-    }
-    public void setDisplay (String msg) {
-        display.setText(msg);
     }
 }
